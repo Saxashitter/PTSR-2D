@@ -1,0 +1,101 @@
+[gd_scene load_steps=20 format=3 uid="uid://b1405ku8jkfjw"]
+
+[ext_resource type="Script" path="res://scripts/states/game.gd" id="1_p5421"]
+[ext_resource type="Script" path="res://scenes/states/players.gd" id="2_e8y42"]
+[ext_resource type="PackedScene" uid="uid://2aiqrst3sq34" path="res://scenes/maps/stage1.tscn" id="2_gp37o"]
+[ext_resource type="Texture2D" uid="uid://do6jjtuekhfgk" path="res://assets/images/score/spr_pizzascore/spr_pizzascore_0.png" id="4_1aa72"]
+[ext_resource type="Texture2D" uid="uid://c8ouwjkretjga" path="res://assets/images/score/spr_pizzascore/spr_pizzascore_1.png" id="5_vgmol"]
+[ext_resource type="Texture2D" uid="uid://dglmt0x7x8ket" path="res://assets/images/score/spr_pizzascore/spr_pizzascore_2.png" id="6_5w61q"]
+[ext_resource type="Texture2D" uid="uid://vtmo01ql6f4p" path="res://assets/images/score/spr_pizzascore/spr_pizzascore_3.png" id="7_0fxuk"]
+[ext_resource type="Texture2D" uid="uid://cbwpjvyj84vdr" path="res://assets/images/score/spr_pizzascore/spr_pizzascore_4.png" id="8_nrwan"]
+[ext_resource type="Texture2D" uid="uid://bh0j7f10badc6" path="res://assets/images/score/spr_pizzascore/spr_pizzascore_5.png" id="9_vsuy0"]
+[ext_resource type="Texture2D" uid="uid://uskd8wsqnxbi" path="res://assets/images/score/spr_pizzascore/spr_pizzascore_6.png" id="10_m37ms"]
+[ext_resource type="Texture2D" uid="uid://bvid8genne5wi" path="res://assets/images/score/spr_pizzascore/spr_pizzascore_7.png" id="11_dtv5s"]
+[ext_resource type="Texture2D" uid="uid://004x8i4pc5v6" path="res://assets/images/score/spr_pizzascore/spr_pizzascore_8.png" id="12_4eby3"]
+[ext_resource type="Texture2D" uid="uid://m6pqexvbldrh" path="res://assets/images/score/spr_pizzascore/spr_pizzascore_9.png" id="13_tmx7y"]
+[ext_resource type="Texture2D" uid="uid://bm82cu01h46h4" path="res://assets/images/score/spr_pizzascore/spr_pizzascore_10.png" id="14_vs2rw"]
+[ext_resource type="Texture2D" uid="uid://cvgbqn7b2woen" path="res://assets/images/score/spr_pizzascore/spr_pizzascore_11.png" id="15_m28av"]
+[ext_resource type="Script" path="res://scripts/score.gd" id="16_0aarj"]
+[ext_resource type="FontFile" uid="uid://7ipd5e5mljk1" path="res://assets/fonts/collect.fnt" id="17_gpcss"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8brl6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_1aa72")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_vgmol")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_5w61q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_0fxuk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_nrwan")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_vsuy0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_m37ms")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_dtv5s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_4eby3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_tmx7y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_vs2rw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_m28av")
+}],
+"loop": true,
+"name": &"default",
+"speed": 24.0
+}]
+
+[sub_resource type="FontVariation" id="FontVariation_maej7"]
+base_font = ExtResource("17_gpcss")
+spacing_glyph = -6
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_p5421")
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("res://scenes/objects/player.tscn")
+spawn_path = NodePath("../Players")
+
+[node name="Players" type="Node" parent="."]
+script = ExtResource("2_e8y42")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Map" parent="." instance=ExtResource("2_gp37o")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Score" type="AnimatedSprite2D" parent="CanvasLayer"]
+position = Vector2(136, 88)
+sprite_frames = SubResource("SpriteFrames_8brl6")
+frame_progress = 0.291952
+script = ExtResource("16_0aarj")
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_left = 48.0
+offset_top = 40.0
+offset_right = 224.0
+offset_bottom = 80.0
+theme_override_constants/line_spacing = 0
+theme_override_fonts/font = SubResource("FontVariation_maej7")
+theme_override_font_sizes/font_size = 25
+text = "1000"
+horizontal_alignment = 1
+text_overrun_behavior = 1

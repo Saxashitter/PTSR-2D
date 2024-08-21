@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://d0qoklmv2ppts"]
+
+[ext_resource type="Script" path="res://scripts/states/menu_play.gd" id="1_546yy"]
+
+[node name="MenuPlay" type="Node2D"]
+script = ExtResource("1_546yy")
+
+[node name="SPButton" type="Button" parent="."]
+offset_left = 584.0
+offset_top = 240.0
+offset_right = 695.0
+offset_bottom = 271.0
+text = "singleplayer"
+
+[node name="MPButton" type="Button" parent="."]
+offset_left = 592.0
+offset_top = 368.0
+offset_right = 690.0
+offset_bottom = 399.0
+text = "multiplayer"

@@ -1,0 +1,116 @@
+[gd_scene load_steps=22 format=3 uid="uid://vkurvx8hdoba"]
+
+[ext_resource type="Texture2D" uid="uid://dbgtn5vvxc6j7" path="res://assets/images/pillarjohn/spr_hungrypillar_dead_0.png" id="1_i7t2m"]
+[ext_resource type="Script" path="res://scripts/objects/pillarjohn.gd" id="1_tgofn"]
+[ext_resource type="Texture2D" uid="uid://cvwf1n1to0ono" path="res://assets/images/pillarjohn/spr_hungrypillar_0.png" id="2_x3p8w"]
+[ext_resource type="Texture2D" uid="uid://83x8o3lyijbs" path="res://assets/images/pillarjohn/spr_hungrypillar_1.png" id="3_wwp35"]
+[ext_resource type="Texture2D" uid="uid://cpck4xmxw5cif" path="res://assets/images/pillarjohn/spr_hungrypillar_2.png" id="4_52s00"]
+[ext_resource type="Texture2D" uid="uid://vg777xofrmgv" path="res://assets/images/pillarjohn/spr_hungrypillar_3.png" id="5_a2o56"]
+[ext_resource type="Texture2D" uid="uid://bb7ranfr0evth" path="res://assets/images/pillarjohn/spr_hungrypillar_4.png" id="6_70r7x"]
+[ext_resource type="Texture2D" uid="uid://ccucxn1bmoq4i" path="res://assets/images/pillarjohn/spr_hungrypillar_5.png" id="7_o73b0"]
+[ext_resource type="Texture2D" uid="uid://dl30ohb2v7r0m" path="res://assets/images/pillarjohn/spr_hungrypillar_6.png" id="8_p2eck"]
+[ext_resource type="Texture2D" uid="uid://cdyqjmh3apk8g" path="res://assets/images/pillarjohn/spr_hungrypillar_7.png" id="9_xu2p8"]
+[ext_resource type="Texture2D" uid="uid://cauq7bfcplvqy" path="res://assets/images/pillarjohn/spr_hungrypillar_8.png" id="10_ai5f5"]
+[ext_resource type="Texture2D" uid="uid://bo33sm2j41db4" path="res://assets/images/pillarjohn/spr_hungrypillar_9.png" id="11_k4qqt"]
+[ext_resource type="Texture2D" uid="uid://b7r2ttbd55gjs" path="res://assets/images/pillarjohn/spr_hungrypillar_10.png" id="12_5c847"]
+[ext_resource type="Texture2D" uid="uid://dndldb5mh054h" path="res://assets/images/pillarjohn/spr_hungrypillar_11.png" id="13_uxrrf"]
+[ext_resource type="Texture2D" uid="uid://b8dkoigvqwlu0" path="res://assets/images/pillarjohn/spr_hungrypillar_angry_0.png" id="14_swofx"]
+[ext_resource type="Texture2D" uid="uid://t1fvixbckjol" path="res://assets/images/pillarjohn/spr_hungrypillar_angry_1.png" id="15_xfqin"]
+[ext_resource type="Texture2D" uid="uid://ckqhpg16vc80w" path="res://assets/images/pillarjohn/spr_hungrypillar_angry_2.png" id="16_1xvoa"]
+[ext_resource type="Texture2D" uid="uid://bdgnpp4f3mq2" path="res://assets/images/pillarjohn/spr_hungrypillar_angry_3.png" id="17_yk85j"]
+[ext_resource type="Texture2D" uid="uid://de1n8bbo3q6k8" path="res://assets/images/pillarjohn/spr_hungrypillar_angry_4.png" id="18_n1e20"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xyd2h"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_i7t2m")
+}],
+"loop": true,
+"name": &"dead",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_x3p8w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_wwp35")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_52s00")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_a2o56")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_70r7x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_o73b0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_p2eck")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_xu2p8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_ai5f5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_k4qqt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_5c847")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_uxrrf")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_swofx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_xfqin")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_1xvoa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_yk85j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_n1e20")
+}],
+"loop": true,
+"name": &"scared",
+"speed": 24.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i8pmn"]
+size = Vector2(121, 224)
+
+[node name="John" type="RigidBody2D"]
+collision_layer = 3
+collision_mask = 3
+contact_monitor = true
+script = ExtResource("1_tgofn")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 2
+position = Vector2(0, -112)
+sprite_frames = SubResource("SpriteFrames_xyd2h")
+animation = &"idle"
+frame = 7
+frame_progress = 0.83828
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0.5, -112)
+shape = SubResource("RectangleShape2D_i8pmn")
